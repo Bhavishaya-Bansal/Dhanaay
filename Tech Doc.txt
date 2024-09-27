@@ -8,15 +8,18 @@ Allows users to submit feedback, including selecting a product, rating it, and a
 Uses state to manage form data and product list fetched from the backend.
 The user ID is retrieved from localStorage, and feedback is submitted via an API call to /feedback/add.
 Features a simple UI with MUI components (TextField, Select, Button, etc.), rating input using stars, and basic error handling.
+
 FeedbackList:
 
 Displays a list of all feedback entries retrieved from the /feedback endpoint.
 Maps the feedback data into MUI Card components, showing the product name, rating, comment, and username.
+
 LoginSignup:
 
 Manages login/signup functionality, toggling between the two forms.
 On form submission, an API call is made to /users/login or /users/signup, depending on the state.
 Error handling is provided for invalid login credentials or signup failures.
+
 ProductList:
 
 Displays all products with their descriptions and average ratings.
@@ -32,11 +35,13 @@ Uses express to serve as the backend server.
 Uses sequelize for database management and data models.
 Middleware includes cors and express.json() for enabling CORS and parsing JSON payloads.
 Routes for users, products, and feedback are imported and used.
+
 Routes:
 
 Users Route (/users): Handles login/signup logic.
 Products Route (/products): Retrieves product data.
 Feedback Route (/feedback): Handles adding feedback and retrieving all feedback entries.
+
 Database Models:
 
 Product: Represents products in the system.
