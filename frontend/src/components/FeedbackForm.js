@@ -11,11 +11,13 @@ import {
   Box, 
   Grid 
 } from '@mui/material';
+import StarIcon from '@mui/icons-material/Star';
+import StarBorderIcon from '@mui/icons-material/StarBorder';
 
 function FeedbackForm() {
   const [products, setProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState('');
-  const [rating, setRating] = useState(5);
+  const [rating, setRating] = useState(0);
   const [comment, setComment] = useState('');
   const [error, setError] = useState('');
 
@@ -35,15 +37,18 @@ function FeedbackForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const user = JSON.parse(localStorage.getItem('user'));
+    const userId = user ? user.id : null; 
+
     const newFeedback = {
-      userId: 1,
+      userId: userId,
       productId: selectedProduct,
       rating,
       comment,
     };
 
     try {
-      const response = await api.post('/feedback/add', newFeedback);
+      await api.post('/feedback/add', newFeedback);
       setSelectedProduct('');
       setRating(5);
       setComment('');
@@ -56,7 +61,7 @@ function FeedbackForm() {
   };
 
   return (
-    <Box sx={{ width: '50%', margin: 'auto', mt: 4 }}>
+    <Box sx={{ maxWidth: 800, margin: 'auto', mt: 4, p: 2, border: '1px solid #ccc', borderRadius: 2 }}>
       <Typography variant="h4" gutterBottom>Submit Feedback</Typography>
       {error && <Typography color="error">{error}</Typography>}
       <form onSubmit={handleSubmit}>
@@ -76,16 +81,16 @@ function FeedbackForm() {
           </Select>
         </FormControl>
 
-        <TextField
-          fullWidth
-          label="Rating"
-          type="number"
-          inputProps={{ min: 1, max: 5 }}
-          value={rating}
-          onChange={(e) => setRating(Number(e.target.value))}
-          margin="normal"
-          required
-        />
+        <Typography variant="h6" gutterBottom>Rating</Typography>
+        <Grid container spacing={1} sx={{ mb: 2 }}>
+          {[1, 2, 3, 4, 5].map((value) => (
+            <Grid item key={value}>
+              <span onClick={() => setRating(value)} style={{ cursor: 'pointer' }}>
+                {value <= rating ? <StarIcon color="primary" /> : <StarBorderIcon />}
+              </span>
+            </Grid>
+          ))}
+        </Grid>
 
         <TextField
           fullWidth

@@ -1,14 +1,6 @@
-//FeedbackList.js
-
 import React, { useState, useEffect } from 'react';
 import api from '../api';
-import { 
-  Typography, 
-  Card, 
-  CardContent, 
-  Box, 
-  Grid 
-} from '@mui/material';
+import { Typography, Card, CardContent, Box, Grid } from '@mui/material';
 
 function FeedbackList() {
   const [feedbacks, setFeedbacks] = useState([]);
@@ -29,8 +21,8 @@ function FeedbackList() {
   };
 
   return (
-    <Box sx={{ width: '80%', margin: 'auto', mt: 4 }}>
-      <Typography variant="h4" gutterBottom>Feedback List</Typography>
+    <Box sx={{ maxWidth: 800, margin: 'auto', mt: 4, p: 2, border: '1px solid #ccc', borderRadius: 2 }}>
+      <Typography variant="h5" gutterBottom>Feedback List</Typography>
       {error && <Typography color="error">{error}</Typography>}
       <Grid container spacing={2}>
         {feedbacks.map(feedback => (
@@ -40,7 +32,7 @@ function FeedbackList() {
                 <Typography variant="h6">Product: {feedback.Product?.name}</Typography>
                 <Typography>Rating: {feedback.rating}</Typography>
                 <Typography>Comment: {feedback.comment}</Typography>
-                <Typography>User: {feedback.user?.username}</Typography>
+                <Typography>User: {feedback.User?.username}</Typography>
               </CardContent>
             </Card>
           </Grid>

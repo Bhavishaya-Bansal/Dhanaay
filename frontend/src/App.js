@@ -1,91 +1,55 @@
-// // import './App.css';
-// // import FeedbackForm from './components/FeedbackForm';
-// // import FeedbackList from './components/FeedbackList';
-// // import ProductList from './components/ProductList';
-// // import Cp from './components/Cp';
+// app.js
 
-
-// // function App() {
-// //   return (
-// //     <div className="App">
-// //       <h1>Customer Feedback Management System</h1>
-// //       <Cp/>
-// //       {/* <FeedbackForm />
-// //       <FeedbackList />
-// //       <ProductList /> */}
-// //     </div>
-// //   );
-// // }
-
-// // export default App;
-
-
-// import './App.css';
-// import FeedbackForm from './components/FeedbackForm';
-// import FeedbackList from './components/FeedbackList';
-// import ProductList from './components/ProductList';
-// import Cp from './components/Cp';
-// import { Container, Typography, Box } from '@mui/material';
-
-// function App() {
-//   return (
-//     <Container>
-//       <Box sx={{ textAlign: 'center', marginTop: 4 }}>
-//         <Typography variant="h2" gutterBottom>
-//           Customer Feedback Management System
-//         </Typography>
-//       </Box>
-
-//       {/* Render Feedback Form */}
-//       <Box sx={{ marginBottom: 4 }}>
-//         <FeedbackForm />
-//       </Box>
-
-//       {/* Render Feedback List */}
-//       <Box sx={{ marginBottom: 4 }}>
-//         <FeedbackList />
-//       </Box>
-
-//       {/* Render Product List */}
-//       <Box sx={{ marginBottom: 4 }}>
-//         <ProductList />
-//       </Box>
-//     </Container>
-//   );
-// }
-
-// export default App;
-
-
-import './App.css';
 import FeedbackForm from './components/FeedbackForm';
 import FeedbackList from './components/FeedbackList';
 import ProductList from './components/ProductList';
-import { Container, Typography, Box } from '@mui/material';
+import LoginSignup from './components/LoginSignup';
+import { Container, Typography, Box, Button } from '@mui/material';
+import { useState, useEffect } from 'react';
 
 function App() {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('user');
+    setUser(null);
+  };
+
   return (
-    <Container>
-      <Box sx={{ textAlign: 'center', marginTop: 4 }}>
-        <Typography variant="h2" gutterBottom>
+    <Container maxWidth="lg" sx={{ mt: 4 }}>
+      <Box sx={{ textAlign: 'center', mb: 4 }}>
+        <Typography variant="h3" component="h1" gutterBottom>
           Customer Feedback Management System
         </Typography>
       </Box>
 
-      {/* Render Feedback Form */}
-      <Box sx={{ marginBottom: 4 }}>
-        <FeedbackForm />
-      </Box>
-
-      {/* Render Feedback List */}
-      <Box sx={{ marginBottom: 4 }}>
-        <FeedbackList />
-      </Box>
-
-      {/* Render Product List */}
-      <Box sx={{ marginBottom: 4 }}>
-        <ProductList />
-      </Box>
+      {user ? (
+        <>
+          <Box sx={{ mb: 4 }}>
+            <FeedbackForm />
+          </Box>
+          <Box sx={{ mb: 4 }}>
+            <FeedbackList />
+          </Box>
+          <Box sx={{ mb: 4 }}>
+            <ProductList />
+          </Box>
+          <Box sx={{ textAlign: 'center', mb: 4 }}>
+            <Button variant="contained" color="secondary" onClick={handleLogout}>
+              Logout
+            </Button>
+          </Box>
+        </>
+      ) : (
+        <LoginSignup setUser={setUser} />
+      )}
     </Container>
   );
 }

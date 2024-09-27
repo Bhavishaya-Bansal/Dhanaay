@@ -1,5 +1,3 @@
-//ProductList.js
-
 import React, { useState, useEffect } from 'react';
 import api from '../api';
 import { 
@@ -41,21 +39,19 @@ function ProductList() {
   };
 
   const getAverageRating = (id) => {
-    const filteredFeedbacks = feedbacks.filter(feedback => feedback.productId===id);
-    if(filteredFeedbacks.length===0){
+    const filteredFeedbacks = feedbacks.filter(feedback => feedback.productId === id);
+    if (filteredFeedbacks.length === 0) {
       return -1;
     }
-    const initialValue = 0;
     const sumWithInitial = filteredFeedbacks.reduce(
       (accumulator, currentValue) => accumulator + currentValue.rating,
-      initialValue,
+      0,
     );
-    console.log(filteredFeedbacks);
-    return (sumWithInitial/filteredFeedbacks.length).toFixed(2);
-  }
+    return (sumWithInitial / filteredFeedbacks.length).toFixed(2);
+  };
 
   return (
-    <Box sx={{ width: '80%', margin: 'auto', mt: 4 }}>
+    <Box sx={{ maxWidth: 800, margin: 'auto', mt: 4, p: 2, border: '1px solid #ccc', borderRadius: 2 }}>
       <Typography variant="h4" gutterBottom>Product List</Typography>
       {error && <Typography color="error">{error}</Typography>}
       <Grid container spacing={2}>
@@ -67,7 +63,7 @@ function ProductList() {
                 <Typography>{product.description}</Typography>
                 <Typography>
                   <strong>Average Rating:</strong>{' '}
-                  {getAverageRating(product.id)!==-1?getAverageRating(product.id):'No Ratings Yet'}
+                  {getAverageRating(product.id) !== -1 ? getAverageRating(product.id) : 'No Ratings Yet'}
                 </Typography>
               </CardContent>
             </Card>
