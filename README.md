@@ -183,3 +183,23 @@ Fork the repository.
 Create a new branch.
 Make your changes.
 Submit a pull request.
+
+SCREENSHOTS:
+
+Here user is given the choice to either Login if it is an existing user, if not then the user can SIGN UP
+![image](https://github.com/user-attachments/assets/6152af82-be55-4d51-9777-1ab18c11324b)
+
+Here user can submit the feedback. By selecting the product, giving in the rating and putting in the comment as per their wish.
+![image](https://github.com/user-attachments/assets/3f2b4d42-59e6-4d68-a858-7085631d78cb)
+
+Choosing the Product:
+![image](https://github.com/user-attachments/assets/8de50e2f-83c8-417d-bb26-75d5601b5bb8)
+
+Giving in the rating and adding the Comment:
+![image](https://github.com/user-attachments/assets/0a3d992a-3a8b-48be-a33d-bca2c8f0e764)
+
+Here user can see the Feedbacks given for different Users on as per the Products:
+![image](https://github.com/user-attachments/assets/694299cc-4bf1-4630-93ba-9d2ec4a98bf4)
+
+In the end user has the Product's List with all of the products being mentioned in it and a LOG OUT button for the user to logout of the website:
+![image](https://github.com/user-attachments/assets/5f717522-3e31-4492-acd2-a239588548e2)
