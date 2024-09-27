@@ -1,70 +1,168 @@
-# Getting Started with Create React App
+Full Stack Feedback System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a full-stack web application that allows users to provide feedback on products. Users can submit feedback, view the list of products along with their ratings, and view all feedback left by others.
 
-## Available Scripts
+Features:
 
-In the project directory, you can run:
+User Signup and Login functionality.
+Users can submit feedback for products with a rating and comment.
+View all feedback and average ratings for products.
+Admins can manage products and view user feedback.
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Technologies Used:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Frontend:
 
-### `npm test`
+React.js (v18.3.1)
+Material UI (MUI) for design components.
+Axios for making HTTP requests.
+React Router Dom for routing between different pages.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Backend:
 
-### `npm run build`
+Node.js with Express.js (v4.21.0)
+MySQL (using Sequelize ORM v6.37.3 for database interactions)
+bcrypt for password hashing and security.
+Joi for request validation.
+dotenv for environment configuration.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Installation and Setup:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Prerequisites:
 
-### `npm run eject`
+Node.js (>= 14.x.x)
+MySQL database installed and configured.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Steps to run the project:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Clone the repository:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+bash
+Copy code
+git clone <repository-url>
+cd project-directory
+Backend Setup:
 
-## Learn More
+Navigate to the backend folder:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+bash
+Copy code
+cd backend
+Install dependencies for the backend:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+bash
+Copy code
+npm install
+Set up environment variables by creating a .env file in the backend folder and add the following:
 
-### Code Splitting
+bash
+Copy code
+DB_NAME=your_db_name
+DB_USER=your_db_user
+DB_PASSWORD=your_db_password
+DB_HOST=localhost
+PORT=5000
+Ensure your MySQL server is running and create the database manually.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Start the backend server:
 
-### Analyzing the Bundle Size
+bash
+Copy code
+npm run dev
+Frontend Setup:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Navigate to the frontend folder:
 
-### Making a Progressive Web App
+bash
+Copy code
+cd frontend
+Install dependencies for the frontend:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+bash
+Copy code
+npm install
+Start the frontend development server:
 
-### Advanced Configuration
+bash
+Copy code
+npm start
+Accessing the Application:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+The frontend will be running at http://localhost:3000 by default.
+The backend API will be running at http://localhost:5000.
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+API Endpoints:
 
-### `npm run build` fails to minify
+User Routes:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+POST /users/signup: Create a new user.
+POST /users/login: Login for existing users.
+
+Product Routes:
+
+GET /products: Get all products.
+POST /products/add: Add a new product (Admin).
+
+Feedback Routes:
+
+GET /feedback: Get all feedback for all products.
+POST /feedback/add: Submit feedback for a product.
+
+
+MySQL Database Schema:
+
+Users Table:
+
+id (INT, Primary Key, Auto Increment)
+username (VARCHAR, Unique)
+email (VARCHAR, Unique)
+password (VARCHAR)
+Products Table:
+
+id (INT, Primary Key, Auto Increment)
+name (VARCHAR)
+description (VARCHAR)
+Feedbacks Table:
+
+id (INT, Primary Key, Auto Increment)
+userId (Foreign Key from Users Table)
+productId (Foreign Key from Products Table)
+rating (INT)
+comment (VARCHAR)
+
+
+Frontend Structure:
+
+Components:
+FeedbackForm.js: Form for submitting feedback.
+FeedbackList.js: List to display feedback.
+ProductList.js: Display list of products with average rating.
+LoginSignup.js: User login and signup form.
+
+
+Backend Routes:
+
+Models:
+
+User: Handles user data.
+Product: Handles product data.
+Feedback: Handles feedback data.
+
+Routes:
+
+user.js: Routes for user authentication and management.
+product.js: Routes for product CRUD operations.
+feedback.js: Routes for feedback operations.
+
+
+How to contribute:
+Fork the repository.
+Create a new branch.
+Make your changes.
+Submit a pull request.
+
+
