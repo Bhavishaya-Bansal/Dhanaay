@@ -214,3 +214,8 @@ Here user can see the Feedbacks given for different Users on as per the Products
 In the end user has the Product's List with all of the products being mentioned with respective AVERAGE RATING's of the products in it and a LOG OUT button for the user to logout of the website:
 
 ![image](https://github.com/user-attachments/assets/5f717522-3e31-4492-acd2-a239588548e2)
+
+
+DEMO VIDEO OF THE PROJECT:
+
+https://drive.google.com/file/d/1WcKNf8LrPjRPZypYivzqcpBizoAYgDQF/view
